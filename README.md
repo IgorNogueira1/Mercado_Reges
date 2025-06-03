@@ -29,5 +29,5 @@ Sistema de gerenciamento de produtos, clientes e vendas — desenvolvido em **An
 ### 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/SEU_USUARIO/mercado_reges.git
+git clone https://github.com/IgorNogueira1/Mercado_Reges.git
 cd mercado_reges
