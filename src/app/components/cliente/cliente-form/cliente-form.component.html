@@ -1,0 +1,47 @@
+<section style="max-width: 600px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+  <h2 style="margin-bottom: 24px; color: #1976d2; text-align: center;">
+    {{ editando ? 'Editar Cliente' : 'Novo Cliente' }}
+  </h2>
+
+  <form (ngSubmit)="salvar()" style="display: flex; flex-direction: column; gap: 16px;">
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      Nome:
+      <input [(ngModel)]="cliente.nome" name="nome" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+    </label>
+
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      CPF:
+      <input [(ngModel)]="cliente.cpf" name="cpf" required style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+    </label>
+
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      Telefone:
+      <input [(ngModel)]="cliente.telefone" name="telefone" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+    </label>
+
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      Email:
+      <input [(ngModel)]="cliente.email" name="email" type="email" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+    </label>
+
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      Endereço:
+      <input [(ngModel)]="cliente.endereco" name="endereco" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+    </label>
+
+    <button type="submit" style="
+      margin-top: 16px;
+      padding: 12px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    " onmouseover="this.style.background='#1565c0'" onmouseout="this.style.background='#1976d2'">
+      💾 Salvar Cliente
+    </button>
+  </form>
+</section>

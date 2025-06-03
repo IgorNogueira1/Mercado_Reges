@@ -1,0 +1,73 @@
+<a routerLink="/" style="
+  display: inline-block;
+  margin-bottom: 20px;
+  background-color: #9e9e9e;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.3s ease;
+" onmouseover="this.style.background='#757575'" onmouseout="this.style.background='#9e9e9e'">
+  ⬅️ Voltar para Home
+</a>
+
+<section style="max-width: 1000px; margin: 40px auto; padding: 20px;">
+  <h2 style="color: #1976d2; font-size: 28px; margin-bottom: 20px;">📋 Lista de Clientes</h2>
+
+  <a routerLink="/clientes/novo" style="
+    display: inline-block;
+    background-color: #1976d2;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 6px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-bottom: 20px;
+    transition: background 0.3s ease;
+  " onmouseover="this.style.background='#1565c0'" onmouseout="this.style.background='#1976d2'">
+    ➕ Novo Cliente
+  </a>
+
+  <div style="overflow-x: auto;">
+    <table style="
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid #e0e0e0;
+      border-radius: 8px;
+      overflow: hidden;
+      background-color: #fff;
+    ">
+      <thead style="background-color: #f5f5f5;">
+        <tr>
+          <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Nome</th>
+          <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">CPF</th>
+          <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Telefone</th>
+          <th style="padding: 12px; text-align: center; border-bottom: 1px solid #ddd;">Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let c of clientes" style="border-top: 1px solid #eee;">
+          <td style="padding: 12px;">{{ c.nome }}</td>
+          <td style="padding: 12px;">{{ c.cpf }}</td>
+          <td style="padding: 12px;">{{ c.telefone }}</td>
+          <td style="padding: 12px; text-align: center;">
+            <a [routerLink]="['/clientes/editar', c.id]" style="
+              color: #1976d2;
+              text-decoration: none;
+              margin-right: 10px;
+              font-weight: 500;
+            ">✏️ Editar</a>
+            <button (click)="deletar(c.id)" style="
+              background: none;
+              border: none;
+              color: #e53935;
+              font-weight: 500;
+              cursor: pointer;
+            ">🗑️ Excluir</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>

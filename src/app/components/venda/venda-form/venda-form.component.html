@@ -1,0 +1,78 @@
+
+
+<section style="max-width: 800px; margin: 40px auto; background: #fff; padding: 32px; border-radius: 12px; box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);">
+  <h2 style="color: #1976d2; text-align: center; margin-bottom: 24px;">
+    🧾 {{ editando ? 'Editar' : 'Nova' }} Venda
+  </h2>
+
+  <form (ngSubmit)="salvar()" style="display: flex; flex-direction: column; gap: 20px;">
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      Cliente:
+      <select [(ngModel)]="venda.cliente_id" name="cliente_id" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        <option [ngValue]="undefined">Sem cliente</option>
+        <option *ngFor="let c of clientes" [value]="c.id">{{ c.nome }}</option>
+      </select>
+    </label>
+
+    <label style="display: flex; flex-direction: column; font-weight: 500;">
+      Forma de Pagamento:
+      <select [(ngModel)]="venda.forma_pagamento" name="forma_pagamento" style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+        <option>Dinheiro</option>
+        <option>Cartão</option>
+        <option>Pix</option>
+        <option>Outro</option>
+      </select>
+    </label>
+
+    <div style="border-top: 1px solid #ddd; padding-top: 20px;">
+      <h3 style="margin-bottom: 12px;">🧺 Itens da Venda</h3>
+
+      <div style="display: flex; gap: 12px; flex-wrap: wrap; align-items: center;">
+        <select #prod style="padding: 10px; border-radius: 6px; border: 1px solid #ccc;">
+          <option *ngFor="let p of produtos" [value]="p.id">{{ p.nome }}</option>
+        </select>
+
+        <input #qtd type="number" placeholder="Quantidade" min="1" style="width: 120px; padding: 10px; border-radius: 6px; border: 1px solid #ccc;" />
+
+        <button type="button" (click)="adicionarItem(+prod.value, +qtd.value)" style="
+          background-color: #1976d2;
+          color: white;
+          padding: 10px 16px;
+          border: none;
+          border-radius: 6px;
+          font-weight: 500;
+          cursor: pointer;
+        " onmouseover="this.style.background='#1565c0'" onmouseout="this.style.background='#1976d2'">
+          ➕ Adicionar
+        </button>
+      </div>
+
+      <ul style="margin-top: 16px; list-style: none; padding-left: 0;">
+        <li *ngFor="let item of venda.itens" style="padding: 10px; border-bottom: 1px solid #eee;">
+          🛒 Produto ID: {{ item.produto_id }} —
+          Quantidade: {{ item.quantidade }} —
+          Preço Unitário: {{ item.preco_unitario | currency:'BRL' }}
+        </li>
+      </ul>
+    </div>
+
+    <p style="font-size: 18px; font-weight: 600; text-align: right;">
+      💰 <strong>Total:</strong> {{ venda.valor_total | currency:'BRL' }}
+    </p>
+
+    <button type="submit" style="
+      margin-top: 20px;
+      padding: 12px;
+      background-color: #1976d2;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    " onmouseover="this.style.background='#1565c0'" onmouseout="this.style.background='#1976d2'">
+      💾 Salvar Venda
+    </button>
+  </form>
+</section>
